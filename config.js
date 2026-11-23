@@ -1027,12 +1027,14 @@ global.APIs = { // API Prefix
 	nrtm: 'https://nurutomo.herokuapp.com/',
 	ghst: 'https://api-ghost.herokuapp.com/',
 	botstyle: 'https://botstyle-api.herokuapp.com',
-	beni: 'https://botstylee-ben-production.up.railway.app/'
+	beni: 'https://botstylee-ben-production.up.railway.app/',
+	botstyle: 'https://app.chocodata.com/app'
 }
 global.APIKeys = { // APIKey Here
 	// 'https://website': 'apikey'
-        'https://botstyle-api.herokuapp.com': 'iAEzm9gH',
-	'https://api-ghost.herokuapp.com': 'EsLLv3'
+    'https://botstyle-api.herokuapp.com': 'iAEzm9gH',
+	'https://api-ghost.herokuapp.com': 'EsLLv3',
+	'https://app.chocodata.com/app': 'cd_live__1Jhp_53MvnDQH4srBcRxQgmiie82lzE'
 }
 
 global.multiplier = 69
