@@ -1028,13 +1028,15 @@ global.APIs = { // API Prefix
 	ghst: 'https://api-ghost.herokuapp.com/',
 	botstyle: 'https://botstyle-api.herokuapp.com',
 	beni: 'https://botstylee-ben-production.up.railway.app/',
-	botstyle: 'https://app.chocodata.com/app'
+	botstyle: 'https://app.chocodata.com/app',
+	choco: 'https://scrapecreators.com'
 }
 global.APIKeys = { // APIKey Here
 	// 'https://website': 'apikey'
     'https://botstyle-api.herokuapp.com': 'iAEzm9gH',
 	'https://api-ghost.herokuapp.com': 'EsLLv3',
-	'https://app.chocodata.com/app': 'cd_live__1Jhp_53MvnDQH4srBcRxQgmiie82lzE'
+	'https://app.chocodata.com/app': 'cd_live__1Jhp_53MvnDQH4srBcRxQgmiie82lzE',
+	'https://scrapecreators.com': 'Qq1wEzASanQMHkVOV4C1VODSU0t1'
 }
 
 global.multiplier = 69
