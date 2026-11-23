@@ -73,7 +73,7 @@ var handler = async (m, { conn, text, args, usedPrefix = '.', command = 'followe
 	if (!database) throw 'Database bot belum siap, coba lagi sebentar.'
 
 	var { baseUrl, apiKey } = getApiConfig()
-	if (!apiKey) throw 'API key Chocodata belum dikonfigurasi. Atur CHOCODATA_API_KEY atau API key Chocodata di config.js.'
+	if (!apiKey) throw 'API key Botstylee belum dikonfigurasi. Atur BOTSTYLEE_API_KEY atau API key Botstylee di config.js.'
 
 	database.users = database.users || {}
 	database.users[m.sender] = database.users[m.sender] || {}
@@ -118,14 +118,14 @@ var handler = async (m, { conn, text, args, usedPrefix = '.', command = 'followe
 			})
 		} catch (error) {
 			var status = error.response?.status
-			if (status) throw `Chocodata menolak permintaan (HTTP ${status}). Periksa API key dan endpoint.`
-			if (error.code === 'ECONNABORTED') throw 'Permintaan ke Chocodata timeout. Coba lagi nanti.'
-			throw 'Tidak dapat terhubung ke Chocodata. Coba lagi nanti.'
+			if (status) throw `Botstylee menolak permintaan (HTTP ${status}). Periksa API key dan endpoint.`
+			if (error.code === 'ECONNABORTED') throw 'Permintaan ke Botstylee timeout. Coba lagi nanti.'
+			throw 'Tidak dapat terhubung ke Botstylee. Coba lagi nanti.'
 		}
 
 		var result = response.data
 		if (result?.success === false || result?.error) {
-			throw typeof result.error === 'string' ? `Chocodata: ${result.error}` : 'Chocodata tidak berhasil mengambil data akun tersebut.'
+			throw typeof result.error === 'string' ? `Botstylee: ${result.error}` : 'Botstylee tidak berhasil mengambil data akun tersebut.'
 		}
 
 		// Pakai kuota hanya ketika API sukses merespons.
