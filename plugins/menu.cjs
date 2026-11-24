@@ -47,11 +47,20 @@ const clockString = milliseconds => {
 	return [hours, minutes, seconds].map(value => String(value).padStart(2, '0')).join(':')
 }
 
+const resolveName = async (conn, jid, fallback) => {
+	try {
+		if (typeof conn?.getName !== 'function') return fallback
+		return (await conn.getName(jid)) || fallback
+	} catch {
+		return fallback
+	}
+}
+
 const handler = async (m, { conn, usedPrefix = '.', __dirname } = {}) => {
 	try {
 		const database = global.db?.data
 		const user = database?.users?.[m.sender] || {}
-		const name = await conn.getName(m.sender).catch(() => m.pushName || 'Teman')
+		const name = await resolveName(conn, m.sender, m.pushName || 'Teman')
 		const now = moment().tz('Asia/Jakarta')
 		const packagePath = path.join(__dirname || path.join(__dirname, '..', 'plugins'), '../package.json')
 		let packageInfo = {}
@@ -96,11 +105,12 @@ const handler = async (m, { conn, usedPrefix = '.', __dirname } = {}) => {
 		}).filter(Boolean)
 
 		let text = [before, ...sections, after].filter(Boolean).join('\n')
+		const botName = await resolveName(conn, conn.user?.jid || conn.user?.id || '', 'Bot')
 		const replacements = {
 			p: usedPrefix,
 			name,
 			role: user.role || 'Beginner',
-			me: await conn.getName(conn.user?.jid || conn.user?.id || '').catch(() => 'Bot'),
+			me: botName,
 			npmname: packageInfo.name || 'Botstylee',
 			npmdesc: packageInfo.description || '',
 			version: packageInfo.version || '',
