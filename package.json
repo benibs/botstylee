@@ -20,7 +20,7 @@
   "author": "Benniismael",
   "license": "ISC",
   "dependencies": {
-    "@whiskeysockets/baileys": "github:WhiskeySockets/Bailey",
+    "@whiskeysockets/baileys": "^6.7.18",
     "@adiwajshing/keyed-db": "^0.2.4",
     "@bochilteam/scraper": "^3.0.0",
     "aki-api": "^6.0.8",
