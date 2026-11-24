@@ -1,11 +1,9 @@
-import db from '../../lib/database.js'
+import db from '../lib/database.js'
 
-var handler = async (m, {
-	command
-}) => {
+var handler = async (m, { command }) => {
 	if (!m.quoted) throw 'Reply Pesan!'
 	if (!m.quoted.fileSha256) throw 'SHA256 Hash Missing'
-	var sticker = db.data.sticker
+	var sticker = db.data.sticker || (db.data.sticker = {})
 	var hash = m.quoted.fileSha256.toString('hex')
 	if (!(hash in sticker)) throw 'Hash not found in database'
 	sticker[hash].locked = !/^un/i.test(command)
