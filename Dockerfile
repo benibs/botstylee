@@ -1,16 +1,17 @@
-FROM node:lts-buster
+FROM node:20-bullseye-slim
 
 RUN apt-get update && \
   apt-get install -y \
   ffmpeg \
   imagemagick \
   webp && \
-  apt-get upgrade -y && \
   rm -rf /var/lib/apt/lists/*
 
-COPY package.json .
+WORKDIR /app
 
-RUN npm install && npm install qrcode-terminal
+COPY package*.json ./
+
+RUN npm install --legacy-peer-deps
 
 COPY . .
 
