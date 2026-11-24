@@ -1,10 +1,6 @@
-import db from '../../lib/database.js'
+import db from '../lib/database.js'
 
-var handler = async (m, {
-	text,
-	usedPrefix,
-	command
-}) => {
+var handler = async (m, { text, usedPrefix, command }) => {
 	db.data.sticker = db.data.sticker || {}
 	if (!m.quoted) throw `Balas stiker dengan perintah *${usedPrefix + command}*`
 	if (!m.quoted.fileSha256) throw 'SHA256 Hash Missing'
@@ -19,9 +15,8 @@ var handler = async (m, {
 		at: +new Date,
 		locked: false,
 	}
-	m.reply(`Berhasil!`)
+	m.reply('Berhasil!')
 }
-
 
 handler.help = ['cmd'].map(v => 'set' + v + ' <teks>')
 handler.tags = ['tools']
